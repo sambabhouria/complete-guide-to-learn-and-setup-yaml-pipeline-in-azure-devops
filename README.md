@@ -23,7 +23,7 @@ this we have below two option .
 In this Document we will discuss setup YAML Pipeline.
 # YAML Pipeline Structure 
 
-![Cpature](Yaml-pipeline-structure.png)
+![https://github.com/sambabhouria/complete-guide-to-learn-and-setup-yaml-pipeline-in-azure-devops](Yaml-pipeline-structure.png)
 
 # Hierarchy of YAML File
 
@@ -35,11 +35,11 @@ Here is the list of component which we use in YAML pipeline creation.
 1. Stages.
 Stage is collection of Jobs which runs sequentially.
 
-![Cpature](stages.png)
+![https://github.com/sambabhouria/complete-guide-to-learn-and-setup-yaml-pipeline-in-azure-devops](stages.png)
 
 2. Jobs.
 Job is Collection of Steps that runs on agents/environment.
-![Cpature](jobs.png)
+![https://github.com/sambabhouria/complete-guide-to-learn-and-setup-yaml-pipeline-in-azure-devops](jobs.png)
 
 
 3. Steps.
@@ -72,14 +72,14 @@ We can begin with demo to setup YAML pipeline for below three scenarios.
 1. Single Stage, Single Job YAML Pipeline
 
 Assume that if you have assigned to setup build for an application. In this scenario we can omit stages or Jobs.
-![Cpature](single-stage-single-job.png)
+![https://github.com/sambabhouria/complete-guide-to-learn-and-setup-yaml-pipeline-in-azure-devops](single-stage-single-job.png)
 
 Here you can notice that we did not include the Stage and Job section  in the YAML pipeline as it is not required in this scenario.
 
 2. Single Stage Multi Job YAML Pipeline
 
 Let's assume you have to perform some activity on different Agent. Like building application on Windows, Mac OS, Linux. In this scenario we can create multiple job and each job can be assigned with respective agent.
-![Cpature](single-stage-multi-job.png)
+![https://github.com/sambabhouria/complete-guide-to-learn-and-setup-yaml-pipeline-in-azure-devops](single-stage-multi-job.png)
 
 
 3. Multi Stage YAML Pipeline.
@@ -88,7 +88,7 @@ In this scenario you have assigned one application where you need to build the P
 
 Stage1 --> Build the Application
 Stage 2 --> Deploy the Application
-![Cpature](multi-stage-multi-job.png)
+![https://github.com/sambabhouria/complete-guide-to-learn-and-setup-yaml-pipeline-in-azure-devops](multi-stage-multi-job.png)
 
 
 For more watch this video
