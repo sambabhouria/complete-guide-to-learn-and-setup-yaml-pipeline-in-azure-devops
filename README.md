@@ -1,70 +1,96 @@
-# Getting Started with Create React App
+# LetsDevOps: YAML Pipeline Tutorial, Setting up CI/CD using YAML Pipeline, Multi Stage/Job Setup.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
 
-## Available Scripts
+This article is for understanding the core concept of YAML Pipeline in Azure DevOps. Further it describe how you can write your own YAML file to implement CI/CD.
 
-In the project directory, you can run:
+### What is YAML
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
+YAML is a human-readable data-serialization language and it helps to configure pipeline as a Code.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+`Indentation is very important in YAML.`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## YAML Pipeline
 
-### `npm run build`
+In Azure DevOps, Pipelines helps to setup Continuous Integration/ Continuous Deployment and to achieve
+this we have below two option .
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Classic Editor.
+2. YAML Pipeline.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+In this Document we will discuss setup YAML Pipeline.
+# YAML Pipeline Structure 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Cpature](Yaml-pipeline-structure.png)
 
-### `npm run eject`
+# Hierarchy of YAML File
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![Cpature](Yaml-pipeline-structure.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Component of YAML Pipeline
+Here is the list of component which we use in YAML pipeline creation.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Stages.
+Stage is collection of Jobs which runs sequentially.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![Cpature](stages.png)
 
-## Learn More
+2. Jobs.
+Job is Collection of Steps that runs on agents/environment.
+![Cpature](jobs.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. Steps.
+Steps helps to define the set of process to setup your task or any activity which you want to perform on any specific job.
 
-### Code Splitting
+Kind of Steps
++ `Task`
++ `Script`
++ `templatereference`
+![Cpature](steps.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# Schema of YAML Pipeline file.
 
-### Analyzing the Bundle Size
+![Cpature](schema-of-pipeline-file.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# `Important Note:-`
 
-### Making a Progressive Web App
+1.In some cases if there is only one stage required for pipeline we can omit stage keyword and can directly start from Jobs.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+2. In some build setup where only one agent is required for pipeline in that case we can omit Job and directly define the Steps.
 
-### Advanced Configuration
+# DEMO:
+We can begin with demo to setup YAML pipeline for below three scenarios.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+`Single Stage, Single Job YAML Pipeline`
+`Single Stage Multi Job YAML Pipeline`
+`Multi Stage YAML Pipeline`
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. Single Stage, Single Job YAML Pipeline
 
-### `npm run build` fails to minify
+Assume that if you have assigned to setup build for an application. In this scenario we can omit stages or Jobs.
+![Cpature](single-stage-single-job.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Here you can notice that we did not include the Stage and Job section  in the YAML pipeline as it is not required in this scenario.
+
+2. Single Stage Multi Job YAML Pipeline
+
+Let's assume you have to perform some activity on different Agent. Like building application on Windows, Mac OS, Linux. In this scenario we can create multiple job and each job can be assigned with respective agent.
+![Cpature](single-stage-multi-job.png)
+
+
+3. Multi Stage YAML Pipeline.
+
+In this scenario you have assigned one application where you need to build the Project, package it. After that you need to deploy the application. In this case we can create two stage.
+
+Stage1 --> Build the Application
+Stage 2 --> Deploy the Application
+![Cpature](multi-stage-multi-job.png)
+
+
+For more watch this video
+
+[YAML Pipeline Tutorial](https://www.youtube.com/watch?v=JtbG6WkLGng&ab_channel=SumitRaj)
